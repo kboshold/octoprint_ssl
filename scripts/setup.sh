@@ -1,5 +1,4 @@
 mkdir -p /opt/ssl
-cp ./settings_template.env settings.env
 
 if ! command -v sed &> /dev/null
 then
@@ -30,7 +29,6 @@ fi
 if [ "$OCTOPRINT_SSL_PROVIDER" = "certbot-cloudflare-dns" ]; then
     sed -i "s|bind :::443 .*|bind :::443 v4v6 ssl crt  /etc/letsencrypt/live/$OCTOPRINT_SSL_DOMAIN/$OCTOPRINT_SSL_DOMAIN.pem|" /etc/haproxy/haproxy.cfg
 fi
-
 
 if [ "$OCTOPRINT_SSL_DISABLE_HTTP" = "true" ]; then
     sed -i -E "s|(#\s*)?(bind :::80 .*)|# \2|" /etc/haproxy/haproxy.cfg
