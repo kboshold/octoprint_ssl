@@ -1,4 +1,5 @@
 mkdir -p /opt/ssl
+cp ./settings_template.env settings.env
 
 if ! command -v sed &> /dev/null
 then
