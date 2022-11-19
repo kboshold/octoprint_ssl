@@ -1,5 +1,5 @@
 if [ "$OCTOPRINT_SSL_PROVIDER" = "certbot" ]; then
-    certbot certonly --standalone
+    python3 /usr/local/bin/certbot certonly 
 fi
 
 if [ "$OCTOPRINT_SSL_PROVIDER" = "local" ]; then
