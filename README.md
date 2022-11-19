@@ -4,6 +4,8 @@ This is just a bundle of scripts to setup HTTPS for OctoPi / OctoPrint. The scri
 
 ## Setup
 
+
+
 ## Configuration
 
 ## Certification generation 

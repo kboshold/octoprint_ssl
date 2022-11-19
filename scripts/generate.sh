@@ -1,5 +1,10 @@
 if [ "$OCTOPRINT_SSL_PROVIDER" = "certbot" ]; then
-    python3 /usr/local/bin/certbot certonly 
+    cat > /root/.secrets/cloudflare.cfg <<EOF
+dns_cloudflare_api_token = "$OCTOPRINT_SSL_CERTBOT_CLOUDFLARE_API_TOKEN"
+EOF
+    python3 /usr/local/bin/certbot certonly --non-interactive --agree-tos -m $OCTOPRINT_SSL_CERTBOT_EMAIL --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.cfg -d $OCTOPRINT_SSL_DOMAIN --preferred-challenges dns-01
+
+    cat "/etc/letsencrypt/live/$OCTOPRINT_SSL_DOMAIN/fullchain.pem" "/etc/letsencrypt/live/$OCTOPRINT_SSL_DOMAIN/privkey.pem" > "/etc/letsencrypt/live/$OCTOPRINT_SSL_DOMAIN/$OCTOPRINT_SSL_DOMAIN.pem"
 fi
 
 if [ "$OCTOPRINT_SSL_PROVIDER" = "local" ]; then
