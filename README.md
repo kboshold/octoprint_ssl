@@ -7,7 +7,7 @@ Currently, only DNS validation via cloudflare is supported. If another validatio
 ## Setup
 
 ```bash
-curl https://raw.githubusercontent.com/kpalatzky/octoprint_ssl/master/scripts/install.sh | sh
+curl https://raw.githubusercontent.com/kpalatzky/octoprint_ssl/main/scripts/install.sh | sh
 ```
 
 ## Configuration
